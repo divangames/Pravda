@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра Правда или Нет</title>
+    <link rel="stylesheet" href="styles.css">
+    <audio id="victory-sound" src="fanfare.mp3" preload="auto"></audio>
+</head>
+<body>
+    <div id="header">
+        <h1>Игра Правда или Нет</h1>
+        <button id="menu-burger" onclick="toggleMenu()">☰</button>
+        <div id="menu">
+            <button onclick="toggleTheme()">Сменить тему <span class="switch"><input type="checkbox" id="theme-switch"><span class="slider round"></span></span></button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="rating">
+            <h2>Рейтинг</h2>
+            <table id="rating-table">
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Тема</th>
+                        <th>Очки</th>
+                        <th>Время (с)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Рейтинг будет загружен здесь -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="category-selection">
+            <label for="category">Выберите категорию:</label>
+            <select id="category">
+                <option value="">Выберите категорию</option>
+                <option value="Фильмы">Фильмы</option>
+                <option value="Музыка">Музыка</option>
+                <option value="Видеоигры">Видеоигры</option>
+            </select>
+            <button id="start-button" class="button" onclick="startGame()">Начать</button>
+        </div>
+
+        <div id="game" style="display: none;">
+            <div id="question">Вопрос: Яблоко - это фрукт?</div>
+            <div>
+                <button class="button" onclick="answer(true)">Правда</button>
+                <button class="button" onclick="answer(false)">Не правда</button>
+            </div>
+            <div id="result"></div>
+            <div id="score">Очки: 0</div>
+            <div id="attempts">Попыток: 3</div>
+            <div id="timer">Время: 0с</div>
+        </div>
+
+        <div id="name-input" style="display: none;">
+            <label for="player-name">Введите ваше имя:</label>
+            <input type="text" id="player-name" placeholder="Ваше имя">
+            <button class="button" onclick="saveResult()">Сохранить результат</button>
+        </div>
+
+        <div id="victory-modal">
+            <div id="victory-content">
+                <div id="victory-message">ПОБЕДА!</div>
+                <label for="victory-player-name">Введите ваше имя:</label>
+                <input type="text" id="victory-player-name" placeholder="Ваше имя">
+                <button class="button" onclick="saveVictoryResult()">Сохранить результат</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Разработал: <a href="https://vk.com/limited_edition_24" target="_blank">Радыгин Иван</a>
+    </footer>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
