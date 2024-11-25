@@ -123,6 +123,7 @@ function startGame() {
         updateScore();
         updateAttempts();
         startTimer();
+        updateProgressBar();
     } else {
         alert("Выберите категорию!");
     }
@@ -170,6 +171,7 @@ function answer(userAnswer) {
     }
     updateScore(); // Обновление отображения очков
     updateAttempts(); // Обновление отображения попыток
+    updateProgressBar(); // Обновление прогресс бара
 
     // Проверка на исчерпание попыток
     if (attemptsLeft <= 0 && currentQuestionIndex < selectedQuestions.length) {
@@ -177,6 +179,19 @@ function answer(userAnswer) {
         stopTimer();
         document.getElementById('game').innerHTML += '<br><button class="button" onclick="showNameInput()">Сохранить результат</button>';
     }
+}
+
+// Функция для обновления отображения очков
+function updateScore() {
+    const scoreElement = document.getElementById('score');
+    scoreElement.textContent = `Очки: ${score}`;
+}
+
+// Функция для обновления прогресс бара
+function updateProgressBar() {
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const progressPercentage = (currentQuestionIndex / selectedQuestions.length) * 100;
+    progressBarFill.style.width = `${progressPercentage}%`;
 }
 
 // Функция для отображения поля ввода имени после проигрыша
@@ -202,12 +217,6 @@ function playVictorySound() {
     victorySound.play();
 }
 
-// Функция для обновления отображения очков
-function updateScore() {
-    const scoreElement = document.getElementById('score');
-    scoreElement.textContent = `Очки: ${score}`;
-}
-
 // Функция для перезапуска игры
 function restartGame() {
     document.getElementById('category-selection').style.display = 'block';
@@ -220,6 +229,7 @@ function restartGame() {
     document.getElementById('player-name').value = '';
     document.getElementById('victory-player-name').value = '';
     document.getElementById('menu').style.display = 'none'; // Скрываем меню
+    document.getElementById('progress-bar-fill').style.width = '0'; // Сбрасываем прогресс бар
 }
 
 // Функция для смены темы
