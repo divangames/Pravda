@@ -13,6 +13,7 @@
         <button id="menu-burger" onclick="toggleMenu()">☰</button>
         <div id="menu">
             <button onclick="toggleTheme()">Сменить тему <span class="switch"><input type="checkbox" id="theme-switch"><span class="slider round"></span></span></button>
+            <button onclick="showInstructionModal()">Руководство</button>
         </div>
     </div>
 
@@ -69,6 +70,16 @@
                 <label for="victory-player-name">Введите ваше имя:</label>
                 <input type="text" id="victory-player-name" placeholder="Ваше имя">
                 <button class="button" onclick="saveVictoryResult()">Сохранить результат</button>
+            </div>
+        </div>
+
+        <div id="instruction-modal">
+            <div id="instruction-content">
+                <h2>Руководство по автоматизации сайта</h2>
+                <p>Для добавления новых категорий и вопросов, отредактируйте файл <code>questions.js</code>. Добавьте новый ключ в объект <code>categories</code> для новой категории и вопросы в соответствующий массив.</p>
+                <p>Для изменения стилей сайта отредактируйте файл <code>styles.css</code>.</p>
+                <p>Для изменения логики игры отредактируйте файл <code>script.js</code>.</p>
+                <button id="instruction-close" class="button" onclick="hideInstructionModal()">Закрыть</button>
             </div>
         </div>
     </div>

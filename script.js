@@ -214,6 +214,7 @@ function restartGame() {
     document.getElementById('game').style.display = 'none';
     document.getElementById('name-input').style.display = 'none';
     document.getElementById('victory-modal').style.display = 'none';
+    document.getElementById('instruction-modal').style.display = 'none';
     document.getElementById('rating').style.display = 'block'; // Показываем таблицу рекордов
     document.getElementById('game').lastChild.remove();
     document.getElementById('player-name').value = '';
@@ -236,6 +237,16 @@ function toggleTheme() {
 function toggleMenu() {
     const menu = document.getElementById('menu');
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Функция для отображения модального окна руководства
+function showInstructionModal() {
+    document.getElementById('instruction-modal').style.display = 'flex';
+}
+
+// Функция для скрытия модального окна руководства
+function hideInstructionModal() {
+    document.getElementById('instruction-modal').style.display = 'none';
 }
 
 // Инициализация игры
